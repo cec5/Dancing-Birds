@@ -13,12 +13,13 @@ $bird = $birdId ? getBird($birdId) : null;
 		<h5 class = "text-muted fst-italic mb-4"><?= htmlspecialchars($bird['scientific_name']) ?></h5>
 
 		<!-- Bird Image -->
-		<div class = "mb-4">
+		<div class = "col-md-5">
 			<img src="<?= htmlspecialchars($bird['image_url']) ?>" class = "img-fluid rounded" alt = "Image of <?= htmlspecialchars($bird['name']) ?>">
 		</div>
 
 		<!-- Description -->
-		<p class = "lead"><?= nl2br(htmlspecialchars($bird['description'])) ?></p>
+		<h3 class = "mt-5">Description</h3>
+		<p class = "lead"><?= htmlspecialchars($bird['description']) ?></p>
 
 		<!-- Mating Dance Video -->
 		<h3 class = "mt-5">Mating Dance</h3>

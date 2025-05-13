@@ -6,7 +6,7 @@ echo "Insert Bird into Database\n";
 // Helper function for clean input
 function prompt($text) {
     echo $text;
-    return trim(fgets(STDIN));
+    return readline();
 }
 
 $name = prompt("Common Name: ");
@@ -26,6 +26,6 @@ if ($stmt -> execute()) {
     echo "Failed to insert bird: " . $stmt -> error . "\n";
 }
 
-$stmt->close();
-$db->close();
+$stmt -> close();
+$database -> close();
 ?>
