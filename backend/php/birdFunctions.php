@@ -13,3 +13,19 @@ function getBird($id){
     $database -> close();
     return $bird;
 }
+
+function searchBirdsByName($name = '') {
+    $database = databaseConnect();
+    $name = '%' . $name . '%';
+    $stmt = $database -> prepare("SELECT id, name, scientific_name FROM birds WHERE name LIKE ? OR scientific_name LIKE ? ORDER BY name ASC");
+    $stmt -> bind_param("ss", $name, $name);
+    $stmt -> execute();
+    $result = $stmt -> get_result();
+    $birds = [];
+    while ($row = $result -> fetch_assoc()) {
+        $birds[] = $row;
+    }
+    $stmt -> close();
+    $database -> close();
+    return $birds;
+}
