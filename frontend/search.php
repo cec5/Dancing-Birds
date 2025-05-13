@@ -3,14 +3,14 @@ include(__DIR__.'/common/header.php');
 require_once(__DIR__.'/../backend/php/birdFunctions.php');
 
 $searchTerm = $_GET['name'] ?? '';
-$birds = search($searchTerm);
+$birds = searchBirds($searchTerm);
 ?>
 
 <main class="container my-5">
-    <h1 class="mb-4">Search Birds</h1>
+    <h1>Search Birds</h1>
     
     <!-- Search Form -->
-    <form method="GET" class="mb-4">
+    <form method="GET" class="my-4">
         <div class="input-group">
             <input type="text" name="name" class="form-control" value="<?= htmlspecialchars($searchTerm) ?>">
             <button type="submit" class="btn btn-primary">Search</button>
@@ -19,7 +19,7 @@ $birds = search($searchTerm);
 
     <!-- Results Table -->
     <?php if (count($birds) > 0): ?>
-        <table class="table table-hover">
+        <table class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -40,7 +40,7 @@ $birds = search($searchTerm);
             </tbody>
         </table>
     <?php else: ?>
-        <div class="alert alert-warning">No birds found matching your search.</div>
+        <div class="alert alert-warning">No birds found matching your search</div>
     <?php endif; ?>
 </main>
 <?php include(__DIR__.'/common/footer.php'); ?>

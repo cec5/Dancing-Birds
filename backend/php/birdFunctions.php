@@ -14,7 +14,7 @@ function getBird($id){
     return $bird;
 }
 
-function searchBirdsByName($name = '') {
+function searchBirds($name = '') {
     $database = databaseConnect();
     $name = '%' . $name . '%';
     $stmt = $database -> prepare("SELECT id, name, scientific_name FROM birds WHERE name LIKE ? OR scientific_name LIKE ? ORDER BY name ASC");
